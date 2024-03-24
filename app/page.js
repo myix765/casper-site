@@ -1,15 +1,17 @@
+
 import styles from "./styles/Home.module.css"
 import Image from "next/image"
 import FrostedCard from "./components/frostedCard"
+import Newsletter from "./components/newsletter"
+import SpeechBubble from "./components/speechBubble"
 
 const Hero = () => {
     return <div className={`flex flex-col items-center justify-center w-full h-[100svh]`}>
         <h1 className="text-[7rem] font-medium">CASPER</h1>
-        {/* speech bubble */}
-        <div className="bg-[--off-white] w-2/6 rounded-lg">
-            <p className="text-slate-800 text-center px-4 py-5">Hi! I&apos;m your personal desktop assistant, here to create the perfect work environment for you to lock in &gt;:&#41;</p>
-        </div>
-        <div className={styles.bubbleTail}></div>
+        <SpeechBubble
+            text={"Hi! I'm your personal desktop assistant, here to create the perfect work environment for you to lock in >:)"}
+            width={"w-2/6"}
+        />
         {/* hero figuer */}
         <div className={`${styles.heroFigGridArea} w-[56rem] mt-9`}>
             <div className={`w-[45%] h-full`}>
@@ -44,9 +46,19 @@ const Hero = () => {
     </div>
 }
 
+const About = () => {
+    
+}
+
 export default function Home() {
-    return <>
-       {Hero()}
-       
-    </>
+    // let newsletterToken
+    // typeof window !== "undefined" ? newsletterToken = localStorage.getItem("newsletterToken") : newsletterToken = null
+
+    return <div className="relative">
+        <Hero/>
+            <Newsletter
+                // className="container mx-auto"
+            />
+       {/* {!newsletterToken && <Newsletter/>} */}
+    </div>
 }
