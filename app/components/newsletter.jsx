@@ -12,7 +12,7 @@ const CloseButton = () => {
 }
 
 export default function Newsletter() {
-    const [isNewsletter, showNewsletter] = useState(false)
+    const [isNewsletter, showNewsletter] = useState(true)
     const newsletterDelay = 5000 // 5 seconds
 
     function showPopup() {
@@ -24,9 +24,10 @@ export default function Newsletter() {
         console.log("hiding")
     }
 
+    // check if user has already seen the newsletter popup before, if not show popup
     useEffect(() => {
         if (localStorage.getItem("newsletterToken") == null) {
-            localStorage.setItem("newsletterToken", true)
+            // localStorage.setItem("newsletterToken", true) // add seen token to user's cache
             setTimeout(showPopup, newsletterDelay)
         }
     }, [])
@@ -34,9 +35,13 @@ export default function Newsletter() {
     return (
         <>
             {isNewsletter && (
+                // div containing popup, close button, and opacity background
                 <div className="fixed top-0 z-50 grid w-full h-[100svh] place-items-center bg-black bg-opacity-40">
+                    {/* div containing popup and close button */}
                     <div className="relative w-1/2 aspect-[4/3]">
+                        {/* div containing popup */}
                         <div className="flex w-full h-full text-[--dark-blue] font-medium rounded-3xl overflow-hidden">
+                            {/* popup left half */}
                             <div className="w-[45%] bg-[--off-white] flex flex-col items-center justify-center">
                                 <div className="w-4/5 mb-10">
                                     <h2 className="text-5xl mb-5">Sign up for our newsletter!</h2>
@@ -45,20 +50,28 @@ export default function Newsletter() {
                                 <input type="email" id="email" name="email" placeholder="Enter Email Here" className="text-slate-900 w-4/5 px-3 py-3 border-solid border-[--dark-blue] border-2 rounded-lg outline-none mb-4"/>
                                 <button className="w-4/5 px-3 py-3 rounded-lg bg-[--dark-blue] text-[--off-white]">Submit</button>
                             </div>
-                            <div className="bg-[rgb(var(--background-blue))] w-[55%] flex flex-col items-center justify-center gap-8">
-                                <SpeechBubble
-                                    text={"We really appreciate the support!"}
-                                    width={"w-4/5"}
-                                    textStyle={"text-3xl"}
-                                />
-                                <Image
-                                    src="/images/happy-casper.svg"
-                                    width="0"
-                                    height="0"
-                                    alt="Thankful CASPER"
-                                    className="w-3/4 h-auto"
-                                    priority
-                                />
+                            {/* popup right half */}
+                            <div className="bg-[--background-blue] w-[55%] relative overflow-hidden">
+                                <div>
+                                    <div className="absolute bg-[--orange] w-5/6 h-3/4 rounded-full blur-[96px] top-0 right-0 translate-x-1/4 -translate-y-1/4"></div>
+                                    <div className="absolute bg-[--pink] w-[100%] h-3/5 rounded-full blur-[96px] top-[20%] right-[18%]"></div>
+                                    <div className="absolute bg-[--orange] opacity-50 w-5/6 h-2/5 rounded-full blur-[96px] bottom-0 right-[-20%]"></div>
+                                </div>
+                                <div className="h-full flex flex-col items-center justify-center gap-8 relative z-40">
+                                    <SpeechBubble
+                                        text={"We really appreciate the support!"}
+                                        width={"w-4/5"}
+                                        textStyle={"text-2xl"}
+                                    />
+                                    <Image
+                                        src="/images/happy-casper.svg"
+                                        width="0"
+                                        height="0"
+                                        alt="Thankful CASPER"
+                                        className="w-3/4 h-auto"
+                                        priority
+                                    />
+                                </div>
                             </div>
                         </div>
                         <span

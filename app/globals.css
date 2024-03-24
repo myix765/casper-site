@@ -12,15 +12,15 @@
 
 :root {
     --off-white: #fdfdfd;
-    --background-blue: 43, 47, 133;
+    --background-blue: #2B2F85;
     --dark-blue-rgba: 27, 28, 64;
     --dark-blue: #1B1C40;
     --bright-green: #CCF7EE;
-    --orange: 246, 145, 105;
-    --pink: 251, 188, 249;
+    --orange: #F69169;
+    --pink: #FBBCF9;
 }
 
 body {
     color: var(--off-white);
-    background-color: rgb(var(--background-blue));
+    background-color: var(--background-blue);
 }
