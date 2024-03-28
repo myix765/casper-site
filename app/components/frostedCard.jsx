@@ -1,4 +1,4 @@
-import styles from "../styles/Home.module.css"
+import styles from "../styles/Frosted.module.css"
 
 export default function FrostedCard({ prompt, classes }) {
     return <div className={`${classes}`}>

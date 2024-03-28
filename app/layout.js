@@ -10,7 +10,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${saira.className} antialiased`}>{children}</body>
+      <body className={`${saira.className} antialiased overflow-x-hidden`}>{children}</body>
     </html>
   );
 }

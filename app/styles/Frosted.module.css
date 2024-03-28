@@ -1,0 +1,26 @@
+
+.frosted {
+    background-color: rgba(var(--dark-blue-rgba), 0.2);
+    backdrop-filter: 10px;
+    position: relative;
+    z-index: 0;
+    border-radius: 12px;
+}
+
+.frosted::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    padding: 2px; /* sets border width */
+    border-radius: 12px;
+    background: linear-gradient(to right, var(--bright-green), rgba(var(--dark-blue-rgba), 0.3));
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+            mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+}
