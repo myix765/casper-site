@@ -5,13 +5,13 @@ import SpeechBubble from "./speechBubble"
 import { useEffect, useState } from "react"
 
 const CloseButton = () => {
-    return <div className="bg-[--off-white] text-slate-900 rounded-full w-8 h-8 aspect-square grid place-items-center">
+    return <div className="bg-[--off-white] hover:bg-gray-300 text-slate-900 rounded-full w-8 h-8 aspect-square grid place-items-center">
         <p>x</p>
     </div>
 }
 
 export default function Newsletter() {
-    const [isNewsletter, showNewsletter] = useState(false)
+    const [isNewsletter, showNewsletter] = useState(true)
     const newsletterDelay = 5000 // 5 seconds
 
     function showPopup() {
@@ -26,7 +26,7 @@ export default function Newsletter() {
     // check if user has already seen the newsletter popup before, if not show popup
     useEffect(() => {
         if (localStorage.getItem("newsletterToken") == null) {
-            // localStorage.setItem("newsletterToken", true) // add seen token to user's cache
+            localStorage.setItem("newsletterToken", true) // add seen token to user's cache
             setTimeout(showPopup, newsletterDelay)
         }
     }, [])
@@ -35,7 +35,7 @@ export default function Newsletter() {
         <>
             {isNewsletter && (
                 // div containing popup, close button, and opacity background
-                <div className="fixed top-0 z-50 grid w-full h-[100vh] place-items-center bg-black bg-opacity-40">
+                <div className="fixed top-0 z-[100] grid w-full h-[100vh] place-items-center bg-black bg-opacity-40">
                     {/* div containing popup and close button */}
                     <div className="relative w-1/2 aspect-[4/3]">
                         {/* div containing popup */}
@@ -57,7 +57,7 @@ export default function Newsletter() {
                                     <div className="absolute bg-[--pink] w-[100%] h-3/5 rounded-full blur-[96px] top-[20%] right-[18%]"></div>
                                     <div className="absolute bg-[--orange] opacity-50 w-5/6 h-2/5 rounded-full blur-[96px] bottom-0 right-[-20%]"></div>
                                 </div>
-                                <div className="h-full flex flex-col items-center justify-center gap-8 relative z-40">
+                                <div className="h-full flex flex-col items-center justify-center gap-8 relative z-[90]">
                                     <SpeechBubble
                                         text={"We really appreciate the support!"}
                                         width={"w-4/5"}
@@ -76,7 +76,7 @@ export default function Newsletter() {
                         </div>
                         {/* popup close button */}
                         <button
-                            className="absolute top-0 right-0 translate-x-[30%] -translate-y-[30%]"
+                            className="absolute top-0 right-0 translate-x-[30%] -translate-y-[30%] z-[100]"
                             onClick={hidePopup}
                         >
                             <CloseButton/>

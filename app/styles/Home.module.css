@@ -18,6 +18,13 @@
     grid-area: casper;
 }
 
+.casperBackground {
+    background-image: url("/images/hero-casper.svg");
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
 .gradientClip {
     clip-path: polygon(50% 0, 70% 30%, 100% 50%, 70% 70%, 50% 100%, 30% 70%, 0 50%, 30% 30%);
 }

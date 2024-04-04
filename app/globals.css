@@ -47,3 +47,10 @@ h5 {
     font-size: 1.5rem/* 24px */;
     line-height: 2rem/* 32px */;
 }
+
+/* tailwind breakpoint 2xl */
+@media (max-width: 1536px) { 
+    html {
+        font-size: 16px;
+    }
+}
