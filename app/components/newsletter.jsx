@@ -16,20 +16,43 @@ export default function Newsletter() {
 
     function showPopup() {
         showNewsletter(true)
-        console.log("showing")
     }
     function hidePopup() {
         showNewsletter(false)
-        console.log("hiding")
     }
 
     // check if user has already seen the newsletter popup before, if not show popup
     useEffect(() => {
         if (localStorage.getItem("newsletterToken") == null) {
-            localStorage.setItem("newsletterToken", true) // add seen token to user's cache
+            // localStorage.setItem("newsletterToken", true) // add seen token to user's cache
             setTimeout(showPopup, newsletterDelay)
         }
     }, [])
+
+    const [email, setEmail] = useState("")
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+
+        try {
+            const res = await fetch("http://localhost:4000/api/newsletter", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    email
+                })
+            })
+
+            // throw error if unable to fetch from api
+            if (!res.ok) {
+                throw new Error(res.status.toString())
+            }
+        } catch (error) {
+            console.log("failed to add")
+        }
+    }
 
     return (
         <>
@@ -37,20 +60,34 @@ export default function Newsletter() {
                 // div containing popup, close button, and opacity background
                 <div className="fixed top-0 z-[100] grid w-full h-[100vh] place-items-center bg-black bg-opacity-40">
                     {/* div containing popup and close button */}
-                    <div className="relative w-1/2 aspect-[4/3]">
+                    <div className="relative sm:w-1/2 sm:aspect-[4/3]">
                         {/* div containing popup */}
-                        <div className="flex w-full h-full text-[--dark-blue] font-medium rounded-3xl overflow-hidden">
+                        <div className="flex flex-col sm:flex-row w-full h-full text-[--dark-blue] font-medium rounded-3xl overflow-hidden">
                             {/* popup left half */}
-                            <div className="w-[45%] bg-[--off-white] flex flex-col items-center justify-center">
+                            <div className="w-full sm:w-[45%] bg-[--off-white] flex flex-col items-center justify-center">
                                 <div className="w-4/5 mb-10">
                                     <h3 className="mb-5">Sign up for our newsletter!</h3>
-                                    <h5>Be the first to hear about updates and new features.</h5>
+                                    <h6>Be the first to hear about updates and new features.</h6>
                                 </div>
-                                <input type="email" id="email" name="email" placeholder="Enter Email Here" className="text-slate-900 w-4/5 px-3 py-3 border-solid border-[--dark-blue] border-2 rounded-lg outline-none mb-4"/>
-                                <button className="w-4/5 px-3 py-3 rounded-lg bg-[--dark-blue] text-[--off-white]">Submit</button>
+                                <form
+                                    onSubmit={handleSubmit}
+                                    className="w-4/5"
+                                >
+                                    <input
+                                        type="email"
+                                        id="email" name="email"
+                                        placeholder="Enter Email Here"
+                                        className="text-slate-900 w-full px-3 py-3 border-solid border-[--dark-blue] border-2 rounded-lg outline-none mb-4"
+                                        required
+                                        onChange={(e) => {
+                                            setEmail(e.target.value)
+                                        }}
+                                    />
+                                    <button type="submit" className="w-full px-3 py-3 rounded-lg bg-[--dark-blue] text-[--off-white]">Submit</button>
+                                </form>
                             </div>
                             {/* popup right half */}
-                            <div className="bg-[--background-blue] w-[55%] relative overflow-hidden">
+                            <div className="bg-[--background-blue] w-full sm:w-[55%] relative overflow-hidden">
                                 {/* background orange and pink */}
                                 <div>
                                     <div className="absolute bg-[--orange] w-5/6 h-3/4 rounded-full blur-[96px] top-0 right-0 translate-x-1/4 -translate-y-1/4"></div>

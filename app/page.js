@@ -8,15 +8,15 @@ import SpeechBubble from "./components/speechBubble"
 import NavBar from "./components/navBar"
 
 const Hero = () => {
-    return <div className={`flex flex-col items-center justify-center w-full h-[100svh]`}>
+    return <div id="home" className={`flex flex-col items-center justify-center w-full h-[100svh]`}>
         <h1 className="font-medium">CASPER</h1>
         <SpeechBubble
-            text={"Hi! I'm your personal desktop assistant, here to create the perfect work environment for you to lock in >:)"}
-            width={"w-2/5"}
-            textStyle={"text-xl"}
+            text={"Hi! I'm your personal desktop assistant, here to create the perfect work environment"}
+            width={"w-1/2"}
+            textStyle={"text-lg"}
         />
-        {/* hero figuer */}
-        <div className={`${styles.heroFigGridArea} w-[56rem] mt-9`}>
+        {/* hero figure */}
+        <div className={`${styles.heroFigGridArea} w-[56rem] mt-4`}>
             <Image
                 src="/images/hero-casper.svg"
                 width="0"
@@ -28,11 +28,11 @@ const Hero = () => {
             <div className="bg-opacity-60 grid grid-cols-9 grid-rows-5 auto-rows-min">
                 <FrostedCard
                     prompt={"im sad, can you play sad music"}
-                    classes={"col-span-3 col-end-4 row-end-1 "}
+                    classes={"col-span-3 col-end-4 row-end-1"}
                     padding={"py-5 px-6"}
                 />
                 <FrostedCard
-                    prompt={"create a calendar event titled “CASPER weekly meeting” for Saturday 9am and set a notification for 1 hour before thanks CASPER i love you"}
+                    prompt={"create a calendar event titled “CASPER weekly meeting” for Saturday 9am and set a notification for 1 hour before"}
                     classes={"col-span-3 col-start-7 row-end-4 row-span-3 self-start"}
                     padding={"py-5 px-6"}
                 />
@@ -76,7 +76,7 @@ const About = () => {
             <h2>What is CASPER</h2>
             <h5 className="text-center w-2/5">Casper is your personal AI assistant that helps make navigating your desktop more efficient and reduces repetitive work</h5>
         {/* </div> */}
-        <h4 className="mt-[4%] mb-[2%] text-center">Interested? Download CASPER and join our Discord!</h4>
+        <h3 className="mt-[4%] mb-[2%] text-center">Interested? Download CASPER and join our Discord!</h3>
         <div className="flex gap-20">
             {/* download button */}
             {/* need to figure out how to change the svg color so that i can invert the colors (w/o using filter preferably) */}

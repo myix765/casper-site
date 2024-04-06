@@ -16,8 +16,8 @@ const NavLinks = ({ links }) => {
 
 export default function NavBar() {
     const navLinks = {
-        "Home": "/",
-        "Contact": "/contact",
+        "Home": "/#home",
+        // "Contact": "/contact",
         "Download": "/#about"
     }
 
