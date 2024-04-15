@@ -8,7 +8,7 @@ import SpeechBubble from "./components/speechBubble"
 import NavBar from "./components/navBar"
 
 const Hero = () => {
-    return <div id="home" className={`flex flex-col items-center justify-center w-full h-[100svh]`}>
+    return <div id="home" className={`flex flex-col items-center justify-center w-full max-h-[100dvh]`}>
         <h1 className="font-medium">CASPER</h1>
         <SpeechBubble
             text={"Hi! I'm your personal desktop assistant, here to create the perfect work environment"}
@@ -71,12 +71,15 @@ const Hero = () => {
 }
 
 const About = () => {
-    return <div id="about" className="w-full h-[100svh] flex flex-col items-center justify-center pb-[8%] font-medium">
+    return <div id="about" className="w-full h-[100svh] flex flex-col items-center justify-center px-[10%] pb-[8%] font-medium">
         {/* <div className="flex flex-col items-center font-medium"> */}
             <h2>What is CASPER</h2>
-            <h5 className="text-center w-2/5">Casper is your personal AI assistant that helps make navigating your desktop more efficient and reduces repetitive work</h5>
+            <h5 className="text-center w-3/5">Casper is your personal AI assistant that helps make navigating your desktop more efficient and reduces repetitive work</h5>
         {/* </div> */}
-        <h3 className="mt-[4%] mb-[2%] text-center">Interested? Download CASPER and join our Discord!</h3>
+        <div className="mt-[4%] mb-[2%] text-center">
+            <h3 className="pb-2">Interested and want to learn more?</h3>
+            <h3>Download CASPER and join our Discord!</h3>
+        </div>
         <div className="flex gap-20">
             {/* download button */}
             {/* need to figure out how to change the svg color so that i can invert the colors (w/o using filter preferably) */}

@@ -1,0 +1,12 @@
+
+.blobBlur {
+    -webkit-filter: blur(96px);
+    filter: blur(96px);
+}
+
+@media (max-width: 640px) {
+    .blobBlur {
+        -webkit-filter: blur(45px);
+        filter: blur(45px);
+    }
+}

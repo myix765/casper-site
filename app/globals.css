@@ -24,6 +24,7 @@
 body {
     color: var(--off-white);
     background-color: var(--background-blue);
+    overflow-x: hidden;
 }
 
 h1 {
@@ -61,4 +62,11 @@ h6 {
 /* tailwind breakpoint 2xl */
 @media (max-width: 1536px) { 
     
+}
+
+/* tailwind breakpoint sm */
+@media (max-width: 640px) {
+    html {
+        font-size: 12px;
+    }
 }
